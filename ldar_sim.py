@@ -40,6 +40,9 @@ class ldar_sim:
                 sys.exit('Simulation terminated: One or more sites is too far East and is outside the spatial bounds of your weather data!')
             if float(site['lon'])%360 < min(self.state['weather'].longitude):
                 sys.exit('Simulation terminated: One or more sites is too far West and is outside the spatial bounds of your weather data!')
+
+        # Shuffle all the entries to randomize order for identical 't_Since_last_LDAR' values
+        random.shuffle (self.state ['sites'])
         
         # Initialize method(s) to be used; append to state
         for m in self.parameters['methods']:

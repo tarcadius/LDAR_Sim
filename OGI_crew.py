@@ -40,9 +40,6 @@ class OGI_crew:
 
         '''
 
-        # First, shuffle all the entries to randomize order for identical 't_Since_last_LDAR' values
-        random.shuffle(self.state['sites'])
-            
         # Then, identify the site you want based on a neglect ranking
         self.state['sites'] = sorted(self.state['sites'], key=lambda k: k['t_since_last_LDAR'], reverse = True)
 
