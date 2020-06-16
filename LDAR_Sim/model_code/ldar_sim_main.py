@@ -31,9 +31,9 @@ import multiprocessing as mp
 if __name__ == '__main__':
     # ------------------------------------------------------------------------------
     # -----------------------------Global parameters--------------------------------
-    wd = "../inputs_template/"
+    wd = "../case_study/"
     wd = os.path.abspath (wd) + "/"
-    program_list = ['P_ref', 'P_alt', 'P_alt2']  # Programs to compare; Position one should be the reference program (P_ref)
+    program_list = ['P_ref', 'P_1', 'P_2']  # Programs to compare; Position one should be the reference program (P_ref)
     n_processes = None  # Number of processes to use, None = all, 1 = one virtual core, and so on.
     warnings.filterwarnings('ignore')    # Temporarily mute warnings
 
@@ -57,7 +57,7 @@ if __name__ == '__main__':
     simulations = []
     for i in range(n_simulations):
         for j in range(len(programs)):
-            opening_message = 'Program ' + str(j + 1) + ' of ' + str(len(programs)) + '; simulation ' + \
+            opening_message = 'Simulating program ' + str(j + 1) + ' of ' + str(len(programs)) + '; simulation ' + \
                                     str(i + 1) + ' of ' + str(n_simulations)
             simulations.append ([{'i': i, 'program': programs[j], 'wd': wd, 'opening_message': opening_message}])
 

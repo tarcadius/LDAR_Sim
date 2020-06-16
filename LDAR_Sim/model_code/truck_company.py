@@ -34,7 +34,7 @@ class truck_company:
         Initialize a company to manage the truck crews (e.g. a contracting company).
 
         """
-        print('Initializing truck company...')
+        #print('Initializing truck company...')
         self.state = state
         self.parameters = parameters
         self.config = config
@@ -100,7 +100,7 @@ class truck_company:
         Also outputs a map of MCB (maximum condition blackout) over period of analysis.
         """
 
-        print('Generating truck maps...')
+        #print('Generating truck maps...')
 
         # For each cell, sum the total number of deployment days and divide by total number of days        
         for lon in range(len(self.state['weather'].longitude)):
@@ -155,7 +155,7 @@ class truck_company:
         Writes site-level deployment days (DDs) and maximum condition blackouts (MCBs) for each site.
         """
 
-        print('Generating site-level reports for truck company...')
+        #print('Generating site-level reports for truck company...')
 
         for site in self.state['sites']:
             site['truck_prop_DDs'] = self.DD_truck_map[site['lon_index'], site['lat_index']]

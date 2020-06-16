@@ -382,5 +382,5 @@ class LdarSim:
         os.chdir(self.parameters['working_directory'])
         os.chdir('..')
 
-        print('Simulation complete. Thank you for using the LDAR Simulator.')
+        #print('Simulation complete. Thank you for using the LDAR Simulator.')
         return
