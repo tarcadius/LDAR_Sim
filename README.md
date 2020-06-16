@@ -22,12 +22,12 @@ LDAR-Sim is free software: you can redistribute it and/or modify it under the te
 This code may not be modified without sharing the changes, pursuant to the GNU Affero GPL v3 License.
 
 ## [Fox_etal_2020_preprint Release](https://github.com/tarcadius/LDAR_Sim/tree/Fox_etal_2020_preprint)
+You are currently in the Fox et al. 2020 preprint release branch. This is the most recent stable release and is recommended for use. To visit the master branch, which is evolving dynamically and is not a stable release, please [click here](https://github.com/tarcadius/LDAR_Sim).
+
 This release contains the exact code and inputs used in our LDAR-Sim synthesis paper (currently in preprint and in review). Although this version may change with peer review, we recommend using this release, especially for first time users.
 
 Preprint paper (Fox et al 2020): #PREPRINT LINK#
 Citation for this release: #DOI#
-
-You are currently in the master branch, which is evolving dynamically and is not a stable release. The Fox et al. 2020 preprint release is immortalized in a separate branch that can be found by [clicking here](https://github.com/tarcadius/LDAR_Sim/tree/Fox_etal_2020_preprint).
 
 ### Getting started
 This guide is intended to help interested parties reproduce the results from Fox et al 2020, which introduces LDAR-Sim and presents a case study demonstrating various hypothetical LDAR programs in Alberta, Canada.
