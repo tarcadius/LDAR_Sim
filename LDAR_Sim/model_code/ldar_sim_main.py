@@ -23,8 +23,6 @@ from batch_reporting import *
 from ldar_sim_run import *
 import os
 import datetime
-import time
-import gc
 import warnings
 import multiprocessing as mp
 
