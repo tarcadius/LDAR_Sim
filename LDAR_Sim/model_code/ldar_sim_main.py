@@ -33,7 +33,7 @@ if __name__ == '__main__':
     # -----------------------------Global parameters--------------------------------
     wd = "../case_study/"
     wd = os.path.abspath (wd) + "/"
-    program_list = ['P_ref', 'P_1', 'P_2']  # Programs to compare; Position one should be the reference program (P_ref)
+    program_list = ['P_ref', 'P_W', 'P_L', 'P_W_L']  # Programs to compare; Position one should be the reference program (P_ref)
     n_processes = None  # Number of processes to use, None = all, 1 = one virtual core, and so on.
     warnings.filterwarnings('ignore')    # Temporarily mute warnings
 
