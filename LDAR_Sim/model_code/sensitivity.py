@@ -184,6 +184,7 @@ class Sensitivity:
         # Build generic output dataframe
         df_dict = {
             # SA inputs
+            'program': self.parameters['sensitivity']['program'],
             'simulation': self.parameters['simulation'],
             'run_time': time.time() - self.parameters['start_time'],
             'timesteps': self.parameters['timesteps'],

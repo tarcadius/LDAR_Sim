@@ -77,7 +77,14 @@ if __name__ == '__main__':
     metadata = open(output_directory + '/metadata.txt', 'w')
     metadata.write(str(programs) + '\n' +
                    str(datetime.datetime.now()))
-
+    
     metadata.close()
 
+    # Write sensitivity analysis data on a program by program basis
+    sa_df = pd.DataFrame(res)
+    if 'program' in sa_df.columns:
+        for program in sa_df['program'].unique():
+            sa_out = sa_df.loc[sa_df['program'] == program, :]
+            sa_outfile_name = os.path.join(wd, 'sensitivity_analysis', 'sensitivity_' + program + '.csv')
+            sa_out.to_csv(sa_outfile_name, index=False)
 
