@@ -81,5 +81,5 @@ def ldar_sim_run (simulation):
         state['t'].next_day ()
 
     # Clean up and write files
-    sim.finalize ()
-    return
+    sim_summary = sim.finalize ()
+    return (sim_summary)

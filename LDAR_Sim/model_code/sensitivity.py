@@ -300,7 +300,7 @@ class Sensitivity:
             df_dict.update(truck_dict)
             self.export_SA(df_dict, self.output_directory, 'sensitivity_truck.csv')
 
-        return
+        return (df_dict)
 
     def adjust_distribution(self, distribution, outliers, samples):
         if outliers < 0:
