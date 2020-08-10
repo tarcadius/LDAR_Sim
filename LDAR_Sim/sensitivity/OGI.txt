@@ -41,5 +41,6 @@ OGI = {
         'operator_strength': 0,
         'sensitivity': {'perform': True,
                         'program': 'OGI',
-                        'order': '1'}
+                        'order': '1',
+                        'write_results_postsim': False}
     }

@@ -54,5 +54,6 @@ MGL = {
         'operator_strength': 0,
         'sensitivity': {'perform': True,
                         'program': 'truck',
-                        'order': '2'}
+                        'order': '2',
+                        'write_results_postsim': False}
     }

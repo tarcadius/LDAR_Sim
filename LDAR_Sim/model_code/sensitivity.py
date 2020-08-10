@@ -316,17 +316,19 @@ class Sensitivity:
         return distribution
 
     def export_SA(self, dictionary, output_directory, name):
-        df_new = pd.DataFrame([dictionary])
-        output_file = os.path.join(output_directory, name)
-        if not os.path.exists(output_file):
-            df_new.to_csv(output_file, index=False)
-        elif os.path.exists(output_file):
-            for attempts in range(int(1e10)):
-                try:
-                    df_old = pd.read_csv(output_file)
-                    break
-                except: continue
+        if 'write_results_postsim' in self.parameters['sensitivity']:
+            if self.parameters['sensitivity']['write_results_postsim']:
+                df_new = pd.DataFrame([dictionary])
+                output_file = os.path.join(output_directory, name)
+                if not os.path.exists(output_file):
+                    df_new.to_csv(output_file, index=False)
+                elif os.path.exists(output_file):
+                    for attempts in range(int(1e10)):
+                        try:
+                            df_old = pd.read_csv(output_file)
+                            break
+                        except: continue
 
-            df_old = df_old.append(df_new)
-            df_old.to_csv(output_file, index=False)
+                    df_old = df_old.append(df_new)
+                    df_old.to_csv(output_file, index=False)
         return
