@@ -29,10 +29,10 @@ import multiprocessing as mp
 if __name__ == '__main__':
     # ------------------------------------------------------------------------------
     # -----------------------------Global parameters--------------------------------
-    wd = "../case_study/"
+    wd = "../sensitivity/"
     wd = os.path.abspath (wd) + "/"
-    program_list = ['P_ref', 'P_W', 'P_L', 'P_W_L']  # Programs to compare; Position one should be the reference program (P_ref)
-    n_processes = None  # Number of processes to use, None = all, 1 = one virtual core, and so on.
+    program_list = ['OGI']  # Programs to compare; Position one should be the reference program (P_ref)
+    n_processes = 1  # Number of processes to use, None = all, 1 = one virtual core, and so on.
     warnings.filterwarnings('ignore')    # Temporarily mute warnings
 
     # -----------------------------Set up programs----------------------------------
@@ -61,7 +61,7 @@ if __name__ == '__main__':
 
     # Perform simulations in parallel
     with mp.Pool (processes = n_processes) as p:
-        res = p.starmap (ldar_sim_run, simulations)
+        res = p.starmap(ldar_sim_run, simulations)
 
     # Do batch reporting
     if write_data:
