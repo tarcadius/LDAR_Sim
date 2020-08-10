@@ -318,18 +318,22 @@ class Sensitivity:
 
     def export_SA(self, dictionary, output_directory, name):
         if 'write_results_postsim' in self.parameters['sensitivity']:
-            if self.parameters['sensitivity']['write_results_postsim']:
-                df_new = pd.DataFrame([dictionary])
-                output_file = os.path.join(output_directory, name)
-                if not os.path.exists(output_file):
-                    df_new.to_csv(output_file, index=False)
-                elif os.path.exists(output_file):
-                    for attempts in range(int(1e10)):
-                        try:
-                            df_old = pd.read_csv(output_file)
-                            break
-                        except: continue
+            export_data = self.parameters['sensitivity']['write_results_postsim']
+        else:
+            export_data = True
 
-                    df_old = df_old.append(df_new)
-                    df_old.to_csv(output_file, index=False)
+        if export_data:
+            df_new = pd.DataFrame([dictionary])
+            output_file = os.path.join(output_directory, name)
+            if not os.path.exists(output_file):
+                df_new.to_csv(output_file, index=False)
+            elif os.path.exists(output_file):
+                for attempts in range(int(1e10)):
+                    try:
+                        df_old = pd.read_csv(output_file)
+                        break
+                    except: continue
+
+                df_old = df_old.append(df_new)
+                df_old.to_csv(output_file, index=False)
         return
