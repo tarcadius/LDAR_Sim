@@ -93,22 +93,11 @@ class Sensitivity:
             param_df.to_csv(output_file, index=False)
 
         while not os.path.exists(output_file):
-            time.sleep(10)
+            time.sleep(1)
         if os.path.isfile(output_file):
             params = pd.read_csv(output_file)
             current_row = params.iloc[int(self.parameters['simulation'])]
             self.SA_params = current_row.to_dict()
-
-
-        # Go find the secret message (i.e. load required SA parameters)!
-        # for attempts in range(int(1e10)):
-        #     try:
-        #         params = pd.read_csv(output_file)
-        #         current_row = params.iloc[int(self.parameters['simulation'])]
-        #         self.SA_params = current_row.to_dict()
-        #         break
-        #
-        #     except: continue
 
         # --------------Update model parameters according to SA definition--------------
 
