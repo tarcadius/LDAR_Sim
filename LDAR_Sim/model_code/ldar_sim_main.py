@@ -31,8 +31,8 @@ if __name__ == '__main__':
     # -----------------------------Global parameters--------------------------------
     wd = "../sensitivity/"
     wd = os.path.abspath (wd) + "/"
-    program_list = ['OGI']  # Programs to compare; Position one should be the reference program (P_ref)
-    n_processes = 1  # Number of processes to use, None = all, 1 = one virtual core, and so on.
+    program_list = ['OGI', 'MGL']  # Programs to compare; Position one should be the reference program (P_ref)
+    n_processes = 7  # Number of processes to use, None = all, 1 = one virtual core, and so on.
     warnings.filterwarnings('ignore')    # Temporarily mute warnings
 
     # -----------------------------Set up programs----------------------------------
@@ -77,7 +77,14 @@ if __name__ == '__main__':
     metadata = open(output_directory + '/metadata.txt', 'w')
     metadata.write(str(programs) + '\n' +
                    str(datetime.datetime.now()))
-
+    
     metadata.close()
 
+    # Write sensitivity analysis data on a program by program basis
+    sa_df = pd.DataFrame(res)
+    if 'program' in sa_df.columns:
+        for program in sa_df['program'].unique():
+            sa_out = sa_df.loc[sa_df['program'] == program, :]
+            sa_outfile_name = os.path.join(wd, 'sensitivity_analysis', 'sensitivity_' + program + '.csv')
+            sa_out.to_csv(sa_outfile_name, index=False)
 
