@@ -55,8 +55,14 @@ class OperatorAgent:
                     prob_detect += self.parameters['max_det_op'] * (leak['rate'] / (self.state['max_rate']))
                     if prob_detect > 1:
                         prob_detect = 1
-                    prob_detect = prob_detect * self.parameters['operator_strength']
+                    if prob_detect < 0:
+                        prob_detect = 0
+                    try:
+                        prob_detect = prob_detect * self.parameters['operator_strength']
+                    except:
+                        prob_detect = 0
                     detect = np.random.binomial(1, prob_detect)
+
 
                     if detect:
                         if leak['tagged']:
