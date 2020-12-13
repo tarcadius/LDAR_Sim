@@ -8,11 +8,13 @@ LDAR-Sim has many potential uses, including:
   3) Predict the emissions mitigation of proposed or existing fugitive methane policies
   4) Inform the development and niche of technologies and work practices
 
-To learn more about LDAR-Sim, you can read about it in [this preprint](https://eartharxiv.org/rzh92/).
+To learn more about LDAR-Sim, you can:
+  1) Read our [story map](https://arcg.is/1rXeX10) (less technical introduction).
+  2) Read [Fox et al., 2020](https://www.sciencedirect.com/science/article/pii/S0959652620352811).
 
 For first time users, we recommend attempting to reproduce the case study results in Fox et al. 2020 (see below).
 
-Thomas Fox: t.arcadius@gmail.com / thomas.fox@ucalgary.ca
+Thomas Fox: thomas@highwoodemissions.com
 
 Mozhou Gao: mozhou.gao@ucalgary.ca
 
@@ -27,21 +29,19 @@ LDAR-Sim is free software: you can redistribute it and/or modify it under the te
 
 LDAR-Sim code may not be modified without sharing the changes, pursuant to the GNU Affero GPL v3 License.
 
-## [Fox_etal_2020_preprint Release](https://github.com/tarcadius/LDAR_Sim/tree/Fox_etal_2020_preprint)
-You are currently in the Fox et al. 2020 preprint release branch. This is the most recent stable release and is recommended for use. To visit the master branch, which is evolving dynamically and is not a stable release, please [click here](https://github.com/tarcadius/LDAR_Sim).
+## [Fox_etal_2020 Release](https://github.com/tarcadius/LDAR_Sim/tree/Fox_etal_2020)
+You are currently in the Fox et al. 2020 release branch. This is the most recent stable release and is recommended for use. To visit the master branch, which is evolving dynamically and is not a stable release, please [click here](https://github.com/tarcadius/LDAR_Sim).
 
-This release contains the exact code and inputs used in our [LDAR-Sim synthesis paper](https://eartharxiv.org/rzh92/) (currently in preprint and in review). Although this version may change with peer review, we recommend using this release, especially for first time users.
+This release contains the exact code and inputs used in our [LDAR-Sim synthesis paper](https://www.sciencedirect.com/science/article/pii/S0959652620352811). We recommend using this release, especially for first time users.
 
-Preprint paper: [Fox et al 2020](https://eartharxiv.org/rzh92/)
-
-Citation for this release: Fox, Thomas A., Mozhou Gao, Thomas E. Barchyn, Yorwearth L. Jamin, and Chris H. Hugenholtz. 2020. “An Agent-based Model for Estimating Emissions Reduction Equivalence Among Leak Detection and Repair Programs.” EarthArXiv. doi:10.31223/osf.io/rzh92
+Citation for this release: Fox, Thomas A., Mozhou Gao, Thomas E. Barchyn, Yorwearth L. Jamin, and Chris H. Hugenholtz. "An agent-based model for estimating emissions reduction equivalence among leak detection and repair programs." Journal of Cleaner Production (2020): 125237.
 
 ### Getting started
 This guide is intended to help interested parties reproduce the results from Fox et al 2020, which introduces LDAR-Sim and presents a case study demonstrating various hypothetical LDAR programs in Alberta, Canada.
 
 #### Step 1: Before you begin
 Read and understand the LDAR-Sim LICENSE (GNU Affero General Public License Version 3).
-Read Fox et al 2020 to familiarize yourself with LDAR-Sim fundamentals.
+Read [Fox et al 2020](https://www.sciencedirect.com/science/article/pii/S0959652620352811) to familiarize yourself with LDAR-Sim fundamentals.
 
 #### Step 2: Libraries and data
 Install python 3.x. and ensure all required python modules/packages/libraries are available, as listed in the Pipfile.
@@ -54,9 +54,9 @@ To make things easier, we have included windows binaries for the specific versio
 #### Step 3: Reproduce OGI simulations
 The ldar_sim_main file is currently configured for the OGI comparison case study presented in Fox et al 2020. Four different OGI-based LDAR programs are parameterized, which differ only according to weather and labour constraints.
 
-Open and run ldar_sim_main.py - you may need to set your workding directory on line 32, but if you download the entire preprint branch from Github, you should not need to. The working directory used in LDAR-Sim should contain all inputs (this is the case_study folder provided to you). If all input files and program files are in your working directory, no other changes should be required to run the OGI scenarios from the case study. 
+Open and run ldar_sim_main.py - you may need to set your workding directory on line 32, but if you download the entire branch from Github, you should not need to. The working directory used in LDAR-Sim should contain all inputs (this is the case_study folder provided to you). If all input files and program files are in your working directory, no other changes should be required to run the OGI scenarios from the case study. 
 
-The only difference between these simulations and those in the Fox et al. 2020 preprint is that only 3 repeat simulations are run for each program in this demonstration, whereas in the paper, 25 simulations are run for each program to constrain uncertainty. Running 3 sets of simulations for each program over multiple years, rather than 25, will take much less time. Results should resemble Figures 2C and 2D in Fox et al 2020 but will not be exactly the same as the model is stochastic.
+The only difference between these simulations and those in the Fox et al. 2020 study is that only 3 repeat simulations are run for each program in this demonstration, whereas in the paper, 25 simulations are run for each program to constrain uncertainty. Running 3 sets of simulations for each program over multiple years, rather than 25, will take much less time. Results should resemble Figures 2C and 2D in Fox et al 2020 but will not be exactly the same as the model is stochastic.
 
 LDAR-Sim will automatically output a set of figures and spreadsheets comparing among programs and a folder for each program. The program-specific folders will each contain exhaustive data on leaks, facilities, inspection crews, and so on for each simulation that is run.
 
