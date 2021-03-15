@@ -235,8 +235,8 @@ def check_ERA5_file(wd, target_file):
 
     if not target_file_found:
         print("Weather data not found. Downloading now from AWS you...")
-        access_key = os.getenv('AKIAJ6GHAQAWX3ZWZW4A')
-        secret_key = os.getenv('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')
+        access_key = os.getenv('')
+        secret_key = os.getenv('')
         try:
             s3 = boto3.client('s3', aws_access_key_id=access_key, aws_secret_access_key=secret_key)
             s3.download_file('eratest', target_file, r'{}/{}'.format(wd, target_file))
