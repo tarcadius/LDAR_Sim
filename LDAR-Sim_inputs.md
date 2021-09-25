@@ -9,7 +9,7 @@ Github Repository: IM3S Version: 1.X Branch: Master Document Custodian: Thomas F
 Please note the following before reading, using, or modifying this document:
 
 - The purpose of this document is to catalogue the input parameters, files, data, and arguments required to run the LDAR-Sim model.
-- The document you are now reading will _always_ be associated with a specific version or branch of LDAR-Sim. Multiple versions of this document therefore exist, as multiple versions and subversions of LDAR-Sim exist.
+- The document you are now reading will _always_ be associated with a specific version or branch of LDAR-Sim. Multiple versions of this document therefore exist, as multiple versions and sub-versions of LDAR-Sim exist.
 - **If you are submitting a pull request to the public LDAR-Sim repo**, please update this documentation alongside modification to code. Your pull request will not be approved without updating this document with relevant changes to inputs and their implications.
 - Within each category, please maintain alphabetic ordering on contents.
 - For more information on LDAR-Sim, including code, instructions, and additional resources, please visit the Github page by [clicking this link](https://github.com/tarcadius/LDAR_Sim).
@@ -19,7 +19,7 @@ Please note the following before reading, using, or modifying this document:
 
 ## 2. Introduction
 
-To reduce fugitive methane emissions from the oil and gas (O&G) industry, companies implement leak detection and repair (LDAR) programs across their asset base. Traditionally, regulators have specified the use of close-range methods such as the U.S. Environmental Protection Agency's (EPA) Method 21 or Optical Gas Imaging (OGI) cameras for component-level surveys in LDAR programs. These methods remain widely approved by regulators and are effective, however, they are also time consuming and labor intensive. New methane detection and measurement technologies that incorporate satellites, aircraft, drones, fixed sensors, and vehicle-based systems have emerged that promise to deliver faster and more cost-effective LDAR. Prior to applying these technologies and their work practices in LDAR programs, producers must demonstrate equivalence to the regulator – that the proposed alternative will achieve at least the same emissions reductions as incumbent regulatory methods. To support this process, the Leak Detection and Repair Simulator (LDAR-Sim) was developed at the University of Calgary to evaluate the emissions reduction potential of alternative LDAR programs.
+To reduce fugitive methane emissions from the oil and gas (O&G) industry, companies implement leak detection and repair (LDAR) programs across their asset base. Traditionally, regulators have specified the use of close-range methods such as the U.S. Environmental Protection Agency's (EPA) Method 21 or Optical Gas Imaging (OGI) cameras for component-level surveys in LDAR programs. These methods remain widely approved by regulators and are effective, however, they are also time consuming and labor intensive. New methane detection and measurement technologies that incorporate satellites, aircraft, drones, fixed sensors, and vehicle-based systems have emerged that promise to deliver faster and more cost-effective LDAR. Prior to applying these technologies and their work practices in LDAR programs, producers often need to demonstrate equivalence to a regulator – that the proposed alternative will achieve at least the same emissions reductions as incumbent regulatory methods. To support this process, the Leak Detection and Repair Simulator (LDAR-Sim) was developed at the University of Calgary to evaluate the emissions reduction potential of alternative LDAR programs.
 
 LDAR-Sim is a computer model that simulates an asset base of oil and gas facilities, the emissions they produce, and the work crews that use different technologies and methods to find and repair leaks. LDAR-Sim replicates the complex reality of LDAR in a virtual world and allows users to test how changes to facilities or the applications of different technologies and methods might affect emissions reductions and LDAR program costs.
 
@@ -60,10 +60,10 @@ The **simulations** stores >V2 input parameter files. -- This is currently in de
 
 ## 4. Running the Model
 
-To run the model, supply one or more input parameter files as arguments to the program. The main function is called `ldar_sim_main.py` and is the main entrypoint to the model. File paths can be relative to the root directory (e.g., `./parameter_file1.txt`) or absolute (e.g., `D://parameter_files//parameter_file1.txt`). File paths are positional arguments and should be seperated by a single space.
+To run the model, supply one or more input parameter files as arguments to the program. The main function is called `ldar_sim_main.py` and is the main entrypoint to the model. File paths can be relative to the root directory (e.g., `./parameter_file1.yaml`) or absolute (e.g., `D://parameter_files//parameter_file1.yaml`). File paths are positional arguments and should be seperated by a single space.
 
 ```buildoutcfg
-python ldar_sim_main.py parameter_file1.txt parameter_file2.txt
+python ldar_sim_main.py parameter_file1.yaml parameter_file2.yaml
 ```
 
 Alternatively, a single folder name (absolute or relative to root) can be passed by flagged argument _-P_ or _--in_dir_. All json or yaml files within that folder will be added as parameter_files. For example the following will use all parameter files within the sample simulation folder:
@@ -72,7 +72,7 @@ Alternatively, a single folder name (absolute or relative to root) can be passed
 python ldar_sim_main.py --in_dir ./simulations
 ```
 
-Alternatively, one can directly specify the parameters in `ldar_sim_main.py`; however, this is discouraged as it involves changing the model to run different programs and will be depreciated.
+Alternatively, one can directly specify the parameters in `ldar_sim_main.py`; however, this is discouraged as it involves changing the model to run different programs and will eventually be depreciated.
 
 We recommend running the model with a working directory set to /LDAR_Sim/src.
 
@@ -109,7 +109,7 @@ All simulations using multiple parameter files are created the following way:
 1. default parameters in the `inputs` folder are read into the model.
 2. each parameter file is read on top of the respective parameter set, updating only the keys that are supplied.
 
-Parameter files are read on top of each other, starting with the default set of parameters. How does this work? Here is an example `parameter_file1.txt`:
+Parameter files are read on top of each other, starting with the default set of parameters. How does this work? Here is an example `parameter_file1.json`:
 
 ```buildoutcfg
 parameters = {
@@ -119,7 +119,7 @@ parameters = {
 }
 ```
 
-This will revise the `n_simulations` key to 30, from whatever was default, and the `LPR` key to 0.0065, from whatever was default. Next, `parameter_file2.txt` is read, which looks like this:
+This will revise the `n_simulations` key to 30, from whatever was default, and the `LPR` key to 0.0065, from whatever was default. Next, `parameter_file2.json` is read, which looks like this:
 
 ```buildoutcfg
 parameters = {
@@ -144,20 +144,20 @@ Keep in mind that only 2 parameters have been changed with these parameter files
 In this example, changing the `n_simulations` key to 3 makes the model run faster and provides a way to test the model without waiting for it to complete 30 simulations. A reasonable workflow with these parameters would be something like running the model in a test configuration with:
 
 ```buildoutcfg
-python ldar_sim_main.py parameter_file1.txt parameter_file2.txt
+python ldar_sim_main.py parameter_file1.json parameter_file2.json
 ```
 
 Then, when comfortable understanding the outputs and ready to run the model for longer to get more statistically valid results, run:
 
 ```buildoutcfg
-python ldar_sim_main.py parameter_file1.txt
+python ldar_sim_main.py parameter_file1.json
 ```
 
-The model will now run for the full 30 simulations because we did not load `parameter_file2.txt` and the `n_simulations` key did not get overwritten to 3. Essentially `parameter_file2.txt` is a run configuration for testing, it is something you could add onto any simulation you like to test out the configuration, then drop it when you are ready to get production results.
+The model will now run for the full 30 simulations because we did not load `parameter_file2.json` and the `n_simulations` key did not get overwritten to 3. Essentially `parameter_file2.json` is a run configuration for testing, it is something you could add onto any simulation you like to test out the configuration, then drop it when you are ready to get production results.
 
 To ensure reproducibility, the full set of parameters are written in the output directory so the model run can be reproduced or interrogated.
 
-Keep in mind that the **order matters** - if you change around the order that parameter files are read in, the parameters in the end will be different.
+Keep in mind that the **order matters** - if you change around the order that parameter files are read in the parameters in the end will be different.
 
 The example above focused on a testing run configuration, but the functionality is designed to be used to enable modularization. For example, parameter files can be modularized into categories like:
 
@@ -174,7 +174,7 @@ While global parameters are straightforward to specify this way, and the above e
 
 ### LDAR-Sim Parameter Hierarchy
 
-LDAR-Sim uses a 3 level hierarchy of simulations, programs, and methods. To tell LDAR-Sim what level in the hierarchy your parameter file is destined for, you should specify a `parameter_level` parameter that will specify what level your parameter file is aimed at - otherwise LDAR-Sim will interpret it as global.
+As noted above, LDAR-Sim uses a 3 level hierarchy of simulations, programs, and methods. To tell LDAR-Sim what level in the hierarchy your parameter file is destined for, you need to specify a `parameter_level` parameter that will specify what level your parameter file is aimed at - otherwise LDAR-Sim will interpret it as global.
 
 The `parameter_level` parameter can be one of three values:
 
@@ -182,7 +182,7 @@ The `parameter_level` parameter can be one of three values:
 - `program`: parameters are used as a program definition.
 - `method`: parameters are used as a method definition and update a given method by name.
 
-While this is relatively intuitive, there are special considerations for methods:
+There are special considerations for methods:
 
 - First, methods have a `module` key, that relate to specific method modules. For example, an OGI method is simulated using the OGI module. Users can build custom types or extend existing types, but some `module` is necessary to ensure LDAR-Sim knows what code to run. The full list of available modules is provided in parameter documentation below.
     &nbsp;
