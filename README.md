@@ -1,3 +1,5 @@
+# This was the original page for LDAR-Sim (version 1). For Version 2.0 and later, please go to [this page](https://github.com/LDAR-Sim/LDAR_Sim).
+
 # The LDAR Simulator
 ## About LDAR-Sim
 The Leak Detection and Repair Simulator (LDAR-Sim) is an open-source modeling framework for exploring the effectiveness of methane leak detection programs. The purpose of LDAR-Sim is to enable transparent, collaborative, flexible, and intuitive investigation of emerging LDAR technologies, methods, work practices, regulations, and deployment strategies.
