@@ -1,4 +1,4 @@
-# This was the original page for LDAR-Sim (version 1). For Version 2.0 and later, please go to [this page](https://github.com/LDAR-Sim/LDAR_Sim).
+# This was the original page for LDAR-Sim (version 1). For Version 2.0 and later, please go to [this page](https://github.com/LDAR-Sim/LDAR_Sim). As of 2021-10-07, this page is no longer supported.
 
 # The LDAR Simulator
 ## About LDAR-Sim
