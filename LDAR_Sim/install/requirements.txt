@@ -10,5 +10,5 @@ netcdf4==1.5.5.1
 xlrd==2.0.1
 plotnine==0.7.1
 ephem
-gdal==3.2.1
+gdal==3.13.0
 boto3 == 1.16.63
